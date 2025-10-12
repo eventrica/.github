@@ -1,2 +1,3 @@
-# .github
+# Eventrica
+
 Eventrica Public Organization Profile
