@@ -30,7 +30,7 @@ jobs:
         tool: cargo-tarpaulin
 
     - name: Measure
-      run: cargo tarpaulin --workspace --out Xml --output-dir coverage
+      run: cargo tarpaulin --workspace --skip-clean --out Xml --output-dir coverage
 
     - name: Record
       uses: coverallsapp/github-action@v2
