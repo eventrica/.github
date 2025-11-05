@@ -22,7 +22,7 @@ jobs:
           ~/.cargo/registry/cache/
           ~/.cargo/git/db/
           target/
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+        key: ${{ runner.os }}-ci-${{ hashFiles('**/Cargo.lock') }}
 
     - name: Check
       run: |
@@ -37,14 +37,3 @@ jobs:
         cargo test --workspace --tests --verbose
         cargo test --workspace --doc --verbose
         cargo test --workspace --examples --verbose
-
-    - name: Install
-      uses: taiki-e/install-action@v2
-      with:
-        tool: cargo-tarpaulin
-
-    - name: Measure
-      run: cargo tarpaulin --workspace --out Xml --output-dir coverage
-
-    - name: Record
-      uses: coverallsapp/github-action@v2
