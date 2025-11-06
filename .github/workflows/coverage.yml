@@ -34,3 +34,5 @@ jobs:
 
     - name: Record
       uses: coverallsapp/github-action@v2
+      with:
+        allow-empty: true
