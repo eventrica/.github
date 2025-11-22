@@ -4,10 +4,9 @@ on:
   workflow_call:
     inputs:
       arguments:
-        description: Packages to exclude from Cargo Tarpaulin coverage
+        description: Additional arguments for Cargo Tarpaulin
         type: string
         required: false
-        default: ''
 
 env:
   CARGO_TERM_COLOR: always
@@ -36,7 +35,7 @@ jobs:
         tool: cargo-tarpaulin
 
     - name: Measure
-      run: cargo tarpaulin --workspace --skip-clean --out Xml --output-dir coverage {{ inputs.arguments }}
+      run: cargo tarpaulin --workspace --skip-clean --out Xml --output-dir coverage ${{ inputs.arguments }}
 
     - name: Record
       uses: coverallsapp/github-action@v2
